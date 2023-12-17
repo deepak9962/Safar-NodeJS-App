@@ -1,5 +1,6 @@
 This is Safar app note to where you want to go and visit places, with what budget you have;
 This app was made possible with learning the guided path from Coding Ninja 'Basics of NodeJs'
+This app follows the MVC architecture
 
 To run this app
 initial the terminal and run
