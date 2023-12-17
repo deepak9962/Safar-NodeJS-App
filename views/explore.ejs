@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safar - Explore</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/6dfe4a5f82.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+  </head>
+  <body>
+    <%- include('Navbar', {active: "explore"})%>
+    <div
+      class="main bg-opacity-10"
+      style="
+        background: url(https://thumbs.dreamstime.com/b/explore-world-wooden-sign-forest-background-51325243.jpg)
+        no-repeat center;
+        background-size: 120%;
+      "
+    >
+      <% if (reviews.length === 0) { %>
+      <p
+        class="position-absolute top-50 start-50 translate-middle 
+                bg-dark text-white 
+                p-3 rounded fs-3 fw-bold shadow-lg"
+      >
+        No Place Added for now
+      </p>
+      <% } %> <% for (let i of reviews) { %>
+      <div class="review">
+        <div class="left">
+          <img src="<%= i.image %>" alt="" class="img" />
+          <h1 class="user"><%= i.username %></h1>
+        </div>
+        <div class="right">
+          <p><span>Location: </span> <%= i.location %></p>
+          <p><span>Experience: </span> <%= i.experience %></p>
+          <p><span>Place to Visit: </span> <%= i.places %></p>
+          <p><span>Rating: </span> <%= i.rating %></p>
+          <p><span>Expenditure: </span> <%= i.expenditure %></p>
+          <div class="delete-btn">
+            <a href="/delete-review/?id=<%= i._id %>">Delete</a>
+            <i class="fas fa-trash"></i>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <%- include('_footer') %>
+  </body>
+</html>
